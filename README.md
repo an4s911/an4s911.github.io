@@ -1,2 +1,3 @@
 # Anas Basheer
-My Portfolio
+
+Checkout my project: [Number Guessing Game](projects/number-guessing-game/)
