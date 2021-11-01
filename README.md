@@ -1,3 +1,6 @@
 # Anas Basheer
 
-Checkout my project: [Number Guessing Game](projects/number-guessing-game/)
+## MDN Projects:
+- [Number Guessing Game](projects/number-guessing-game/)
+- [Silly Story Generator](projects/silly-story-generator/)
+
