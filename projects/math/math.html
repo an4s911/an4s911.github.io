@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math</title>
+</head>
+<body>
+    <h2>Math</h2>
+    <input type="number" name="num1" id='num1' class="num" value='0'>
+    <input type="number" name="num2" id='num2' class="num" value='1'>
+    <select name="operator" id="operator">
+        <option selected disabled value="">-- select operator --</option>
+        <option value="add">Add</option>
+        <option value="sub">Subtract</option>
+        <option value="mul">Multiply</option>
+        <option value="div">Divide</option>
+        <option value="pow">Exponenet</option>
+    </select>
+    <p id="result"></p>
+
+    <script>
+        let num1;
+        let num2;
+        let result;
+        let resultP = document.querySelector('#result');
+
+        let operator = document.querySelector('#operator');
+        operator.addEventListener('change', setResult)
+
+        for (num of document.querySelectorAll('.num')) {
+            num.addEventListener('change', setResult)
+        }
+
+        function setResult() {
+            num1 = Number(document.querySelector('#num1').value);
+            num2 = Number(document.querySelector('#num2').value);
+
+            if (operator.value === 'add') {
+                result = num1 + num2;
+            } else if (operator.value === 'mul') {
+                result = num1 * num2;
+            } else if (operator.value === 'sub') {
+                result = num1 - num2;
+            } else if (operator.value === 'pow') {
+                result = num1 ** num2;
+            } else if (operator.value === 'div') {
+                result = num1 / num2;
+            }
+            resultP.innerHTML = result;
+        }
+    </script>
+</body>
+</html>
