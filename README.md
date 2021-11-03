@@ -5,5 +5,6 @@
 - [Silly Story Generator](projects/silly-story-generator/)
 
 ## JavaScript Projects:
-- [Some basic Maths](projects/math)
+- [Some basic Maths](projects/math/)
+- [Contacts website](projects/contacts/)
 

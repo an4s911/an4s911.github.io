@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search for contacts</title>
+</head>
+<body>
+    <h1>Contacts</h1>
+
+    <p>Please note: All contacts are stored in memeory. All contacts will be erased if the page is refreshed.</p>
+    <br>
+
+    <label for="new">New contact</label>
+    <input type="text" id="new" placeholder="Name:Number">
+    <button class="new">Add</button>
+    <p class="new"></p>
+    <br>
+
+    <label for="delete">Delete contact</label>
+    <input type="text" id="delete" placeholder="Name">
+    <button class="delete">Delete</button>
+    <p class="delete"></p>
+    <br>
+
+    <label for="search">Search for contact: </label>
+    <input type="text" id="search">
+    <button class="search">Search</button>
+    <p class="search"></p>
+    <br>
+
+    <button class="all">Show all contacts</button>
+    <ul class="all"></ul>
+    <br>
+     
+    <script>
+
+        let contacts = [];
+
+        let input_search = document.querySelector('input#search');
+        let btn_search = document.querySelector('button.search');
+        let para_search = document.querySelector('p.search')
+
+        btn_search.addEventListener('click', function() {
+            let query = input_search.value;
+            let name;
+            let number;
+
+            input_search.value = "";
+            input_search.focus()
+            for (contact of contacts) {
+                contact_info = contact.split(':');
+                if (contact_info[0].toLowerCase() === query.toLowerCase()) {
+                    name = contact_info[0];
+                    number = contact_info[1];
+                    break;
+                }
+            }
+            if (number) {
+                para_search.textContent = name + " -> " + number
+            } else {
+                para_search.textContent = "Contact not found"
+            }
+        })
+
+        let input_new = document.querySelector('input#new')
+        let btn_new = document.querySelector('button.new')
+        let para_new = document.querySelector('p.new')
+
+        btn_new.addEventListener('click', function() {
+            let contact_info = input_new.value;
+            let contact_exists = false;
+
+            input_new.focus()
+            if (contact_info.includes(':') && contact_info.split(':').length === 2) {
+                for (let i = 0; i < contacts.length; i++) {
+                    if (contact_info.split(':')[0].toLowerCase() === contacts[i].split(':')[0].toLowerCase()) {
+                        para_new.textContent = "Sorry, contact name already exists"
+                        contact_exists = true;
+                        break;
+                    }
+                }
+                if (!(contact_exists)) {
+                    contacts.push(contact_info.slice(0, 1).toUpperCase() + contact_info.slice(1).toLowerCase());
+                    para_new.textContent = 'Contact added'
+                    input_new.value = "";
+                }
+            } else {
+                para_new.textContent = "Contact could not be added, incorrect format"
+            }
+        })
+
+        let input_delete = document.querySelector('input#delete')
+        let btn_delete = document.querySelector('button.delete')
+        let para_delete = document.querySelector('p.delete')
+
+        btn_delete.addEventListener('click', function() {
+            let contact_name = input_delete.value;
+            let contact_deleted = false;
+
+            input_delete.focus()
+            for (let i = 0; i < contacts.length; i++) {
+                if (contacts[i].split(':')[0].toLowerCase() === contact_name.toLowerCase()) {
+                    contacts.splice(i, 1);
+                    para_delete.textContent = "Contact Deleted";
+                    contact_deleted = true;
+                    input_delete.value = "";
+                }
+            }
+            if (!(contact_deleted)) {
+                para_delete.textContent = "Sorry, contact not found"
+            }
+        })
+
+        let btn_all = document.querySelector('button.all')
+        let ul_all = document.querySelector('ul.all')
+
+        btn_all.addEventListener('click', function() {
+            ul_all.innerHTML = "";
+            if (contacts.length <= 0) {
+                ul_all.innerHTML = "No contacts found"
+            } else {
+                for (let i = 0; i < contacts.length; i++) {
+                    let contact = contacts[i].split(':')
+                    ul_all.innerHTML += "<li>" + contact[0] + " -> " + contact[1] + "</li>"
+                }
+            }
+        })
+
+    </script>
+</body>
+</html>
