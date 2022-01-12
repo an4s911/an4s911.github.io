@@ -1,0 +1,56 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: 'Ubuntu Mono', monospace, sans-serif;
+    letter-spacing: 2px;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    padding: 24px;
+    color: antiquewhite;
+    background-color: #521212;
+    align-items: center;
+}
+
+.header ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    font-size: 18px;
+}
+
+.section {
+    display: flex;
+    gap: 24px;
+}
+
+.main {
+    flex: 1;
+    padding-left: 150px;
+}
+
+.sidenav {
+    width: 300px;
+    flex: initial;
+    background-color: #C5E1FE;
+}
+
+.sidenav ul {
+    padding-left: 48px;
+    margin: 0;
+}
+
+.footer {
+    padding: 16px;
+    text-align: center;
+    color: antiquewhite;
+    background-color: #521212;
+}
